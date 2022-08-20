@@ -15,7 +15,7 @@ public class DatabaseUtility {
     }
     public void AddUser(String userId,String email, String password, String name) {
         String timezone = TimeZone.getDefault().getID();
-        User user = new User(userId,email, password, name, timezone,0,false);
+        User user = new User(userId,email, password, name, timezone,1,false);
         mDatabase.child("users").child(userId).setValue(user);
     }
 
