@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Project</string>
+    <string name="title_activity_create_user">CreateUserActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_name">Name</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+
+
+    <!-- Animation Urls -->
+    <string name="create_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
+    <string name="login_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
+
 </resources>

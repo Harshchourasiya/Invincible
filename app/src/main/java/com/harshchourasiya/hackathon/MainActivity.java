@@ -1,15 +1,13 @@
 package com.harshchourasiya.hackathon;
 
+import static com.harshchourasiya.hackathon.helper.DataFromSP.getUserIdFromSp;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.harshchourasiya.hackathon.activities.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     public static String TAG = "Test";
@@ -18,5 +16,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        checkIfUserIsLogin();
+    }
+
+
+    private void checkIfUserIsLogin() {
+        if (getUserIdFromSp(this) == null) {
+            openLoginActivity();
+        }
+    }
+
+    private void openLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 }
