@@ -5,6 +5,10 @@ public class User {
     private int level;
     private boolean isComplete;
 
+    public User() {
+
+    }
+
     public User(String userId, String email, String password, String name, String timezone, int level, boolean isComplete) {
         this.userId = userId;
         this.email = email;

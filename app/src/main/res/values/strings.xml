@@ -11,7 +11,6 @@
     <string name="login_failed">"Login failed"</string>
 
 
-
     <!-- Animation Urls -->
     <string name="create_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
     <string name="login_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
