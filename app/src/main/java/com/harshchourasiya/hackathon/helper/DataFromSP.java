@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 
 public class DataFromSP {
 
+    public static String LEVEL_ID = "levelId";
+    public static String LEVEL_NAME = "levelname";
+    public static String LEVEL = "level";
+    public static String LEVEL_TASK = "levelTask";
     public static String SP_ID = "spid";
     public static String USER_ID_SP = "userid";
 

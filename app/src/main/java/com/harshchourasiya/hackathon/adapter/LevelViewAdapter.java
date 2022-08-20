@@ -1,5 +1,10 @@
 package com.harshchourasiya.hackathon.adapter;
 
+import static com.harshchourasiya.hackathon.helper.DataFromSP.LEVEL;
+import static com.harshchourasiya.hackathon.helper.DataFromSP.LEVEL_ID;
+import static com.harshchourasiya.hackathon.helper.DataFromSP.LEVEL_NAME;
+import static com.harshchourasiya.hackathon.helper.DataFromSP.LEVEL_TASK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -16,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.harshchourasiya.hackathon.R;
 import com.harshchourasiya.hackathon.activities.HomeActivity;
+import com.harshchourasiya.hackathon.activities.ShareEXP;
 import com.harshchourasiya.hackathon.helper.DatabaseUtility;
 import com.harshchourasiya.hackathon.schema.Level;
 import com.harshchourasiya.hackathon.schema.User;
@@ -65,7 +71,7 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
         // to Show All the Task Detail when User click on it
         String levelData = levels.get(position).getLevel();
         if (levelData.length() > 50) {
-            levelData = levelData.substring(0, 50);
+            levelData = levelData.substring(0, 50) + "...";;
         }
 
         holder.levelTaskTextView.setText(levelData);
@@ -87,7 +93,7 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
                     user.setLevel(user.getLevel()+1);
                     taskComplete(user);
                 } else {
-                    openCommentActivity();
+                    openCommentActivity(levels.get(p), p);
                 }
             }
         });
@@ -95,10 +101,14 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
     }
 
     private void setTaskViewData(int p, LevelViewHolder holder) {
-        if (holder.levelTaskTextView.getText().length() == 50) {
+        if (holder.levelTaskTextView.getText().toString().endsWith("...")) {
             holder.levelTaskTextView.setText(levels.get(p).getLevel());
         } else {
-            holder.levelTaskTextView.setText(levels.get(p).getLevel().substring(0, 50));
+            String levelData = levels.get(p).getLevel();
+            if (levelData.length() > 50) {
+                levelData = levelData.substring(0, 50) + "...";
+            }
+            holder.levelTaskTextView.setText(levelData);
         }
     }
 
@@ -106,15 +116,16 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
        new DatabaseUtility().completeTask(user);
     }
 
-    private void openCommentActivity() {
-//        openActivity(Comment.class);
-    }
-
-    private void openActivity(Class c) {
-        Intent intent = new Intent(context, c);
+    private void openCommentActivity(Level level, int p) {
+        Intent intent = new Intent(context, ShareEXP.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra(LEVEL_ID, level.getLevelId());
+        intent.putExtra(LEVEL_NAME, level.getLevelName());
+        intent.putExtra(LEVEL_TASK, level.getLevel());
+        intent.putExtra(LEVEL, p);
         context.startActivity(intent);
     }
+
 
     @Override
     public int getItemCount() {
