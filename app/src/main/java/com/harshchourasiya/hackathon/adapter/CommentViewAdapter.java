@@ -45,7 +45,7 @@ public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
-        holder.avatarTextView.setText(comments.get(position).getUserName().charAt(0));
+        holder.avatarTextView.setText(comments.get(position).getUserName().substring(0, 1));
 
         holder.userLevelTextView.setText(comments.get(position).getUserLevel());
         holder.userNameTextView.setText(comments.get(position).getUserName());

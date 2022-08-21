@@ -90,7 +90,7 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
             @Override
             public void onClick(View view) {
                 if (holder.levelButton.getText() == "Complete") {
-                    user.setLevel(user.getLevel()+1);
+                    user.setComplete(true);
                     taskComplete(user);
                 } else {
                     openCommentActivity(levels.get(p), p);
@@ -122,7 +122,7 @@ public class LevelViewAdapter extends RecyclerView.Adapter<LevelViewAdapter.Leve
         intent.putExtra(LEVEL_ID, level.getLevelId());
         intent.putExtra(LEVEL_NAME, level.getLevelName());
         intent.putExtra(LEVEL_TASK, level.getLevel());
-        intent.putExtra(LEVEL, p);
+        intent.putExtra(LEVEL, p+1);
         context.startActivity(intent);
     }
 

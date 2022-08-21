@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingRegistrar;
 import com.harshchourasiya.hackathon.activities.HomeActivity;
 import com.harshchourasiya.hackathon.activities.LoginActivity;
 
@@ -16,8 +20,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setUpPushNotificationToken();
         checkIfUserIsLogin();
+    }
+
+    private void setUpPushNotificationToken() {
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+                Log.i("Test", s);
+            }
+        });
     }
 
 

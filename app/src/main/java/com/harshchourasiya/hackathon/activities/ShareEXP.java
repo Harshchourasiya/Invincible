@@ -10,12 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.harshchourasiya.hackathon.R;
 import com.harshchourasiya.hackathon.adapter.CommentViewAdapter;
@@ -23,6 +26,8 @@ import com.harshchourasiya.hackathon.helper.DatabaseUtility;
 import com.harshchourasiya.hackathon.schema.Comment;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ShareEXP extends AppCompatActivity {
@@ -57,6 +62,7 @@ public class ShareEXP extends AppCompatActivity {
         levelTaskTextView.setText(levelTask);
 
         setRecyclerView(levelId);
+        setShareEXPButton(levelId, levelName, level);
     }
 
     private void setRecyclerView(int id) {
@@ -64,17 +70,20 @@ public class ShareEXP extends AppCompatActivity {
         CommentViewAdapter adapter = new CommentViewAdapter(this, comments);
         commentsRecyclerView.setAdapter(adapter);
         commentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        new DatabaseUtility().getDB()
+        DatabaseReference ref = new DatabaseUtility().getDB()
                 .child("comments")
                 .child(String.valueOf(id))
-                .child("comments")
-                .addValueEventListener(new ValueEventListener() {
+                .child("comments");
+
+        ref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        comments.clear();
                         for(DataSnapshot ds : snapshot.getChildren()) {
                             Comment comment = ds.getValue(Comment.class);
                             comments.add(comment);
                         }
+                        Collections.reverse(comments);
                         adapter.notifyDataSetChanged();
                     }
 
@@ -84,4 +93,20 @@ public class ShareEXP extends AppCompatActivity {
                     }
                 });
     }
+
+    private void setShareEXPButton(int levelId ,String levelName, int level) {
+        shareEXPButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShareEXP.this, AddCommentActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra(LEVEL_ID, levelId);
+                intent.putExtra(LEVEL_NAME, levelName);
+                intent.putExtra(LEVEL, level);
+                startActivity(intent);
+            }
+        });
+    }
+
+
 }
