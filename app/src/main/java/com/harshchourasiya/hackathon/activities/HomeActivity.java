@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +20,6 @@ import com.harshchourasiya.hackathon.helper.DatabaseUtility;
 import com.harshchourasiya.hackathon.schema.Level;
 import com.harshchourasiya.hackathon.schema.User;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         levelRecyclerView = findViewById(R.id.levelRecyclerView);
         nameTextView = findViewById(R.id.nameTextView);
         levelTextView = findViewById(R.id.levelTextView);
+        avatarTextView = findViewById(R.id.avatarText);
         mDatabase = new DatabaseUtility().getDB();
         setData();
     }
@@ -61,7 +59,8 @@ public class HomeActivity extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 nameTextView.setText(user.getName());
                 levelTextView.setText(String.valueOf(user.getLevel()));
-
+                avatarTextView.setText(user.getName().substring(0, 1));
+                avatarTextView.setBackgroundColor(getResources().getColor(R.color.purple_200));
                 List<Level> levels = getLevels(user.getLevel());
                 setRecyclerView(levels, user);
             }

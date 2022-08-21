@@ -8,12 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="20dp"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/showMoreLinearLayout"
+            android:layout_margin="5dp"
             android:orientation="vertical">
 
 
@@ -45,7 +46,11 @@
                     />
             </LinearLayout>
         </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_margin="5dp"/>
             <TextView
                 android:id="@+id/commentDetail"
                 android:layout_width="match_parent"
@@ -53,6 +58,7 @@
                 android:fontFamily="sans-serif"
                 android:textSize="20dp"
                 android:padding="10dp"
+                style="@style/levelText"
                 />
         </LinearLayout>
 

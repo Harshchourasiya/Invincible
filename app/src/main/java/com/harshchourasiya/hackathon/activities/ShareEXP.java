@@ -60,6 +60,7 @@ public class ShareEXP extends AppCompatActivity {
         avatarTextView.setText(String.valueOf(level));
         levelNameTextView.setText(levelName);
         levelTaskTextView.setText(levelTask);
+        avatarTextView.setBackgroundColor(getResources().getColor(R.color.purple_200));
 
         setRecyclerView(levelId);
         setShareEXPButton(levelId, levelName, level);

@@ -28,9 +28,10 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/comment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:inputType="textLongMessage"
+        android:hint="Enter Your Experience..."
+        android:inputType="textImeMultiLine|textMultiLine"
         />
 
     <Button

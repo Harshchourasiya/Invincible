@@ -40,7 +40,6 @@ public class CreateUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         assignVariables();
-        setWarningMessage();
         setOnCreateButtonClick();
     }
 
@@ -55,12 +54,6 @@ public class CreateUserActivity extends AppCompatActivity {
 
     }
 
-    private void setWarningMessage() {
-
-        emailWarning(Color.BLACK);
-        nameWarning(Color.BLACK);
-        passwordWarning(Color.BLACK);
-    }
 
     private void emailWarning(int color) {
         emailInputLayout.setErrorEnabled(true);

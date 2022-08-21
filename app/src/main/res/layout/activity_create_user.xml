@@ -12,6 +12,7 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         app:lottie_url="@string/create_account_lottie_url"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>

@@ -12,7 +12,7 @@
 
 
     <!-- Animation Urls -->
-    <string name="create_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
-    <string name="login_account_lottie_url">https://assets6.lottiefiles.com/packages/lf20_nav6jh6z.json</string>
-
+    <string name="create_account_lottie_url">https://assets3.lottiefiles.com/packages/lf20_myor1trh.json</string>
+    <string name="login_account_lottie_url">https://assets3.lottiefiles.com/packages/lf20_sop8cbmc.json</string>
+    <string name="loading">https://assets4.lottiefiles.com/packages/lf20_ht6o1bdu.json</string>
 </resources>
