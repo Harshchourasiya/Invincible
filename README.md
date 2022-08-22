@@ -7,3 +7,6 @@ It will improve the quality of life of people. Right now day by day new generati
 Android App:- Android App is where all the users get their tasks and can share experience.
 
 Server Script:- This Script Will Send user a Notification Everyday to do that task or New Task if User already complete the previous one.
+
+# Reason for Archiving this project.
+Well The Idea of this project is good but currently I'm working on some other project maybe after sometime in future I will start working on this project. If you want to work on this project you can contact me Harshchourasiy130@gmail.com 
